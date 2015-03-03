@@ -5,73 +5,71 @@ import java.util.*;
  * Created by Vlad on 16.02.2015.
  */
 public class Juice {
-   private ArrayList<String> list = new ArrayList<String>();
-    private HashSet<String> set = new HashSet<String>();
+    private ArrayList<String> listofFruits = new ArrayList<String>();
+    private HashSet<String> setofdiffFruits = new HashSet<String>();
 
     void readFile() throws IOException {
-        String s;
+        String fruits;
         BufferedReader bf = new BufferedReader(new FileReader("fruits.in"));
-        while((s = bf.readLine()) != null){
-            StringTokenizer token = new StringTokenizer(s, " ");
-            while(token.hasMoreTokens()) {
-                list.add(token.nextToken());
+        while ((fruits = bf.readLine()) != null) {
+            StringTokenizer token = new StringTokenizer(fruits, " ");
+            while (token.hasMoreTokens()) {
+                listofFruits.add(token.nextToken());
             }
         }
     }
 
-    void writeFile() throws IOException {
-        String s1;
+    public void writeFile() throws IOException {
+        String fruits;
         BufferedReader bf = new BufferedReader(new FileReader("fruits.in"));
-        while((s1 = bf.readLine()) != null){
-            StringTokenizer token = new StringTokenizer(s1, " ");
-            while(token.hasMoreTokens()) {
-                set.add(token.nextToken());
+        while ((fruits = bf.readLine()) != null) {
+            StringTokenizer token = new StringTokenizer(fruits, " ");
+            while (token.hasMoreTokens()) {
+                setofdiffFruits.add(token.nextToken());
             }
         }
-        String s;
+        String diffFruits;
         BufferedWriter bw = new BufferedWriter(new FileWriter("juice1.out"));
-        Iterator<String> it = set.iterator();
-        while(it.hasNext()){
-            s = it.next();
-            bw.write(s);
+        Iterator<String> it = setofdiffFruits.iterator();
+        while (it.hasNext()) {
+            diffFruits = it.next();
+            bw.write(diffFruits);
             bw.newLine();
         }
         bw.close();
     }
 
-    void countN() throws IOException {
-        Collections.sort(list, new Comparator<String>() {
+    public void countN() throws IOException {
+        Collections.sort(listofFruits, new Comparator<String>() {
             @Override
             public int compare(String o1, String o2) {
-                if(o1.length() < o2.length())
+                if (o1.length() < o2.length())
                     return -1;
-                if(o1.length() > o2.length())
+                if (o1.length() > o2.length())
                     return 1;
                 else
                     return 0;
             }
         });
 
-        String s;
-        int count1 = 0;
-        int index;
-        int n = list.size();
-        for (int i = 0; i < list.size(); i++) {
-            s = list.get(i);
-            for (int j = i + 1; j < list.size(); j++) {
-                if(list.get(j).contains(s)) {
-                    count1++;
-                    index = list.indexOf(s);
-                    s = list.get(j);
-
-                    list.remove(index);
+        String fruits;
+        int numofOperation = 0;
+        int indexofFruit;
+        int n = listofFruits.size();
+        for (int i = 0; i < listofFruits.size(); i++) {
+            fruits = listofFruits.get(i);
+            for (int j = i + 1; j < listofFruits.size(); j++) {
+                if (listofFruits.get(j).contains(fruits)) {
+                    numofOperation++;
+                    indexofFruit = listofFruits.indexOf(fruits);
+                    fruits = listofFruits.get(j);
+                    listofFruits.remove(indexofFruit);
                 }
 
             }
         }
-
         BufferedWriter out = new BufferedWriter(new FileWriter("juice3.out"));
-        out.write("Min: " + (n - count1));
+        out.write("Min: " + (n - numofOperation));
         out.close();
     }
 }

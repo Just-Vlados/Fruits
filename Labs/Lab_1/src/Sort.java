@@ -6,61 +6,55 @@ import java.util.*;
  */
 public class Sort implements Runnable {
     public void run() {
-        HashSet<String> set = new HashSet<String>();
-        String s1;
-        BufferedReader bf = null;
+        HashSet<String> setofFruits = new HashSet<String>();
+        String fruits;
         try {
-            bf = new BufferedReader(new FileReader("fruits.in"));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        try {
-            while((s1 = bf.readLine()) != null){
-                StringTokenizer token = new StringTokenizer(s1, " ");
-                while(token.hasMoreTokens()) {
-                    set.add(token.nextToken());
+            BufferedReader bf = new BufferedReader(new FileReader("fruits.in"));
+            while ((fruits = bf.readLine()) != null) {
+                StringTokenizer token = new StringTokenizer(fruits, " ");
+                while (token.hasMoreTokens()) {
+                    setofFruits.add(token.nextToken());
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        ArrayList<String> listOut1 = new ArrayList <String>();
-        for(String s: set){
+        ArrayList<String> listofSortFruits = new ArrayList<String>();
+        for (String s : setofFruits) {
             StringTokenizer tokenizer = new StringTokenizer(s, " ");
-            while(tokenizer.hasMoreTokens()){
-                listOut1.add(tokenizer.nextToken());
+            while (tokenizer.hasMoreTokens()) {
+                listofSortFruits.add(tokenizer.nextToken());
             }
         }
-        Collections.sort(listOut1, new Comparator<String>() {
+        Collections.sort(listofSortFruits, new Comparator<String>() {
             @Override
             public int compare(String o1, String o2) {
                 return o1.compareTo(o2);
             }
         });
 
-        Iterator<String> it = listOut1.iterator();
-        BufferedWriter out = null;
+        Iterator<String> it = listofSortFruits.iterator();
         try {
-            out = new BufferedWriter(new FileWriter("juice2.out"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        String s;
-        while(it.hasNext()){
-            s = it.next();
+            BufferedWriter out = new BufferedWriter(new FileWriter("juice2.out"));
+            String fruit;
+            while (it.hasNext()) {
+                fruit = it.next();
+                try {
+                    out.write(fruit);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    out.newLine();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
             try {
-                out.write(s);
+                out.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            try {
-                out.newLine();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        try {
-            out.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
