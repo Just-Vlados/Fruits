@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Chat</title>
+    <link href="bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+	<script src="script.js"></script>
+  </head>
+  <body>
+	<div class="main"> 
+	
+		<div class="centerblock">
+				<textarea id="inMessage" readonly rows="6" cols="47" placeholder="Your message..." ></textarea>
+				<button type="button" class="btn btn-default" onclick="sendMessage()"> Send </button>
+				<div id="messages"> </div>
+				<h3> CHAT </h3>
+		</div>
+		
+		<div class="megan">
+				<img src="megan.jpg" ></img>
+		</div>
+		<div class="friendName"> Megan Fox </div>
+		
+		<div class="user">
+				<img src="robert.jpg" > </img>
+		</div>
+		
+		
+		<input id="myName" placeholder="NickName..."> </input>
+		<input id="select" type="button" value = "Log in" onclick="setName()">
+		<div id="Name" face="Arial" style = "visibility: hidden;"></div>
+		<div>
+			<input class="logout" type="button" value = "Log out" onclick="deleteName()" ></input>
+		</div>
+	</div>
+	</body>
+	<footer> Copyright Just-Vlados </footer>
+</html>
