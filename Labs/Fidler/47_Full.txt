@@ -1,0 +1,13 @@
+POST http://10.160.52.242:999/chat HTTP/1.1
+User-Agent: Composer
+Host: 10.160.52.242:999
+Content-Length: 28
+
+{"message" : "how are you?"}
+HTTP/1.1 200 OK
+Date: Tue, 31 Mar 2015 15:33:51 GMT
+Transfer-encoding: chunked
+Access-control-allow-origin: *
+
+0
+

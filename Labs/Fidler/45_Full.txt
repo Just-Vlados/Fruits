@@ -1,0 +1,11 @@
+GET http://10.160.52.242:999/chat?token=TN11EN HTTP/1.1
+User-Agent: Composer
+Host: 10.160.52.242:999
+
+
+HTTP/1.1 200 OK
+Date: Tue, 31 Mar 2015 15:31:14 GMT
+Access-control-allow-origin: *
+Content-length: 50
+
+{"messages":["he","how are ypu"],"token":"TN27EN"}
