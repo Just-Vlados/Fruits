@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Chat</title>
+    <link href="bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+	<script src="script.js"></script>
+  </head>
+  <body onload="run();">
+	<div class="main"> 
+		
+		<div class="centerblock">
+				<input id="myName" type="text" placeholder="NickName..." onkeydown = "if(event.keyCode==13)
+				{
+					changeName();
+					
+				;}"> </input>
+				<button type="submit" class="login" onclick = "changeName(); ">Log in</button>
+				<div id="My-Name" face="Arial" > Name </div>	
+				<textarea id="inMessage" rows="6" cols="47" placeholder="Your message..." ></textarea>
+				<button type="button" class="btn btn-primary" onclick="sendMessage()"> Send </button>
+				<div id="messages"> 
+				<h3> CHAT </h3>
+				<div id = "received">
+					
+				</div>
+				<div class = "sent">
+					
+				</div>
+				</div>
+				<div id="line"> <p><strong id = "chat-name"> Name </strong>, <small color="lime">write your message here.</small></p> </div>
+				<div id = "server-connect">Online</div>
+		</div>
+		
+		<div class="megan">
+				<img src="megan.jpg" ></img>
+		</div>
+		<div class="friendName"> Megan Fox </div>
+		
+		<div class="user">
+				<img src="robert.jpg" > </img>
+		</div>
+		
+		
+		
+		
+			
+	</div>
+	
+	<div id="parent_popup">
+		<div id="popup">
+			<h1>Error!</h1>
+			<p>Сервер не найден.</p>
+			
+			<a class="close" title="Закрыть" onclick="document.getElementById('parent_popup').style.display='none';"></a>
+		</div>
+	</div>
+	
+	
+	</body>
+	<footer> Copyright Just-Vlados </footer>
+</html>
